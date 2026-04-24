@@ -1,13 +1,16 @@
 # Train-Consist-Management-App
-Drawback of UC1 Approach
-In UC1, the train consist is initialized but contains no bogies.
-There is no way yet to add, remove, or inspect bogies dynamically.
-To simulate a real railway system, the application must support operations such as:
-Adding passenger bogies
-Removing bogies
+Drawback of UC3 Approach
+In UC3, we ensured the uniqueness of bogie IDs using HashSet.
+While this solves duplication, it introduces a new problem:
+
+HashSet does not preserve order.
+A train consist must follow a physical sequence:
+Locomotive → Passenger → Cargo → Guard Coach.
 
 
-Checking whether a bogie exists
-
-
-This leads us to use ArrayList operations.
+With HashSet, the arrangement becomes unpredictable, which is unacceptable for real-world train formation.
+So, we need a structure that:
+Maintains insertion order
+Supports fast insertion/removal
+Models real train chaining
+This leads us to LinkedList.
